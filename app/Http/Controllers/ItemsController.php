@@ -37,11 +37,11 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'price'=>'required',
-            'quantity'=>'required',
-            'category'=>'required',
-            'minimum_no'=>'required'
+            'name'=>'required|string',
+            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'quantity'=>'required|integer',
+            'category'=>'required|string',
+            'minimum_no'=>'required|integer'
         ]);
         
         $item=new Item;
@@ -89,20 +89,19 @@ class ItemsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'price'=>'required',
-            'quantity'=>'required',
-            'category'=>'required',
-            'minimum_no'=>'required'
+            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'quantity'=>'required|integer',
+            'category'=>'required|string',
+            'minimum_no'=>'required|integer'
         ]);
         
-        $order=Order::find($id);
-        $order->price=$request->input('price');
-        $order->quantity=$request->input('quantity');
+        $item=Item::find($id);
+        $item->price=$request->input('price');
+        $item->quantity=$request->input('quantity');
         $item->quantity=$request->input('quantity');
         $item->category=$request->input('category');
         $item->minimum_no=$request->input('minimum_no');
-        $order->save();
+        $item->save();
         
         return redirect('/Item')->with('success','Item updated');
     }

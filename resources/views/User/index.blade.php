@@ -23,6 +23,7 @@
                         <th>No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Category</th>
                         <th>Created At</th>
                         <th>Delete</th>
                     </tr>
@@ -33,6 +34,7 @@
                             <td></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->type }}</td>
                             <td>{{ $user->created_at }}</td>
                             {{-- <td class="center">
                                 <a href="{{ route('User.show', ['id'=>$user->id ]) }}" class="btn btn-info btn-sm custom"><i class="glyphicon glyphicon-eye-open"></i> VIEW</a>

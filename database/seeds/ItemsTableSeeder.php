@@ -9,7 +9,7 @@ class ItemsTableSeeder extends Seeder
     {
         Item::create([
             'name'=>'Keropok',
-            'price'=>4,
+            'price'=>4.30,
             'quantity'=>50,
             'category'=>'Jajan',
             'minimum_no'=>10,

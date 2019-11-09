@@ -9,7 +9,7 @@ class OrdersTableSeeder extends Seeder
     {
         Order::create([
             'name'=>'Keropok',
-            'price'=>3,
+            'price'=>3.20,
             'quantity'=>30,
         ]);
     }

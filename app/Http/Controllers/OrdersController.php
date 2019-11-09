@@ -37,9 +37,9 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required',
-            'price'=>'required',
-            'quantity'=>'required'
+            'name'=>'required|string',
+            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'quantity'=>'required|integer',
         ]);
         
         $order=new Order;
@@ -85,8 +85,8 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'price'=>'required',
-            'quantity'=>'required'
+            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'quantity'=>'required|integer',
         ]);
         
         $order=Order::find($id);

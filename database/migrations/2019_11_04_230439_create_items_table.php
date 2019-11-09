@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('price');
+            $table->decimal('price', 5, 2);
             $table->integer('quantity');
-            $table->enum('category',['Beverage','Jajan', 'Stationary', 'Textbook']);
-            $table->string('minimum_no');
+            $table->string('category');
+            $table->integer('minimum_no');
             $table->timestamps();
         });
     }
