@@ -17,11 +17,7 @@
             {{Form::label('password','Password')}}
             {{Form::text('password','',['class'=>'form-control','placeholder'=>'Put the password'])}}
         </div>
-        <div class="form-group">
-            {{Form::label('type','Category')}}
-            {{Form::text('type','',['class'=>'form-control','placeholder'=>'Put Admin or Member'])}}
-        </div>
-        {{-- <div class=”form-group”>
+        <div class=”form-group”>
             <label for="type" class=”col-md-4 control-label” >User Type</label>
             <div class=”col-md-6”>
                 <select class=”form-control” name="type" id="type">
@@ -30,7 +26,8 @@
                     <option value="member">Member</option>
                 </select>
             </div>
-        </div> --}}
+        </div>
+        
         <br>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close()!!} 

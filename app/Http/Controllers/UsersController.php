@@ -97,7 +97,7 @@ class UsersController extends Controller
         $user->name=$request->input('name');
         $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
-        $user->type=$request->input('type');
+        $user->type=$request->get('type');
         $user->save();
         
         return redirect('/User')->with('success','User updated');
