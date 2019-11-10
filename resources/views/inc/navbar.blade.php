@@ -13,7 +13,6 @@
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="/images/logo.png" width="50" height="35">
-                
             </a>
         </div>
 

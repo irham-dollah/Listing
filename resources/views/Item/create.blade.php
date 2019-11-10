@@ -18,13 +18,21 @@
             {{Form::text('quantity','',['class'=>'form-control','placeholder'=>'Put the quantity of item'])}}
         </div>
         <div class="form-group">
-                {{Form::label('category','Category')}}
-                {{Form::text('category','',['class'=>'form-control','placeholder'=>'Put the category of item'])}}
-            </div>
-        <div class="form-group">
                 {{Form::label('minimum_no','Minimum No')}}
                 {{Form::text('minimum_no','',['class'=>'form-control','placeholder'=>'Put the min no needed for item'])}}
-        </div>    
+        </div>
+        <div class=”form-group”>
+                <label for="category" class="col-md-7" control-label >Category</label>
+                <div class=col-md-6>
+                    <select class="form-control" name="category" id="category">
+                        <option value="beverage">Beverage</option>
+                        <option value="snack">Snack</option>
+                        <option value="stationary">Stationary</option>
+                        <option value="textbook">TextBook</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>    
         <br>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close()!!}

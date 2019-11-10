@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\User;
 
 class ItemsController extends Controller
 {
@@ -48,7 +49,7 @@ class ItemsController extends Controller
         $item->name=$request->input('name');
         $item->price=$request->input('price');
         $item->quantity=$request->input('quantity');
-        $item->category=$request->input('category');
+        $item->category=$request->get('category');
         $item->minimum_no=$request->input('minimum_no');
         $item->save();
         

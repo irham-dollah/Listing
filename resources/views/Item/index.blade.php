@@ -37,7 +37,7 @@
                             <td></td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->price }}</td>
+                            <td>RM {{ $item->price }}</td>
                             <td>{{ $item->category }}</td>
                             <td>{{ $item->minimum_no }}</td>
                             <td>Available</td>

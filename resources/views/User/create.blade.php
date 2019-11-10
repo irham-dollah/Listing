@@ -17,10 +17,10 @@
             {{Form::label('password','Password')}}
             {{Form::text('password','',['class'=>'form-control','placeholder'=>'Put the password'])}}
         </div>
-        <div class=”form-group”>
-            <label for="type" class=”col-md-4 control-label” >User Type</label>
-            <div class=”col-md-6”>
-                <select class=”form-control” name="type" id="type">
+        <div class="form-group">
+            <label for="type" class="col-md-12 control-label" >User Type</label>
+            <div class="col-md-3">
+                <select class="form-control" name="type" id="type">
                     <option value="admin">Admin</option>
                     <option value="super_admin">Super Admin</option>
                     <option value="member">Member</option>
@@ -28,6 +28,10 @@
             </div>
         </div>
         
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close()!!} 
