@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\Item;
 
 class OrdersController extends Controller
 {
@@ -25,7 +26,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('Order.create');
+        $items=Item::all();
+        return view('Order.create')->with('items',$items);
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends ('layouts.app')
+@extends ('layouts.home')
 
 @section('content')
     <a href="/Order" class="btn btn-default">Return</a>

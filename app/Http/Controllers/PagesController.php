@@ -8,9 +8,9 @@ use App\User;
 class PagesController extends Controller
 {
     public function index(){
-        $title= 'Welcome to laravel';
+        //$title= 'Welcome to laravel';
         //return view('pages.index', compact('title'));
-        return view('pages.index')->with('title', $title);
+        return view('auth.login');
     }
 
     public function AnalyzeSale(){

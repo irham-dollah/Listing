@@ -13,21 +13,8 @@
 
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/users/{id}/{name}', function ($id,$name) {
-    return 'User ID '.$id.' his name is '.$name;
-});
-
 Route::get('/', 'PagesController@index');
 Route::get('/StockOut', 'PagesController@StockOut');
-Route::get('/AnalyzeSale', 'PagesController@AnalyzeSale');
-Route::get('/StockIn', 'PagesController@StockIn');
-Route::get('/ViewOrder', 'PagesController@ViewOrder');
-Route::get('/ViewStock', 'PagesController@ViewStock');
-Route::get('/ViewUser', 'PagesController@ViewUser');
 Auth::routes();
 
 Route::get('/Dashboard', 'DashboardController@index');
