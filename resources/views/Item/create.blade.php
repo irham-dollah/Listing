@@ -1,7 +1,7 @@
 @extends ('layouts.home')
 
 @section('content')
-    <a href="/Item" class="btn btn-default">Return</a>
+    {{-- <a href="/Item" class="btn btn-default">Return</a> --}}
     <h1>Add Item</h1>
     <br>
     {!! Form::open(['action'=>'ItemsController@store','method'=>'POST'])!!}
@@ -32,7 +32,7 @@
                         <option value="other">Other</option>
                     </select>
                 </div>
-            </div>    
+        </div>    
         <br>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close()!!}

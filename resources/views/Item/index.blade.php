@@ -7,9 +7,9 @@
 
 @section('content')
 
-    <div class="box-header">
+    {{-- <div class="box-header">
         <a href="{{ route('Item.create') }}" class="btn btn-primary" ><i class="glyphicon glyphicon-plus"></i> Add Item</a>
-    </div>
+    </div> --}}
 
     <div class="box box-success box-solid">
         <div class="box-header with-border">

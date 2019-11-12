@@ -32,8 +32,8 @@
     <link href="https://imaluum.iium.edu.my/CSS3FullscreenSlideshow/css/style2.css" rel="stylesheet" type="text/css" /> --}}
     
     {{-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> --}}
-    <link rel="stylesheet" type="text/css" href="css/style2.css" />
-	<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/slideshow/css/style2.css') }}" />
+	<script type="text/javascript" src="{{ asset('assets/slideshow/js/modernizr.custom.86080.js') }}"></script>
 
     <style>
         .center{
@@ -53,10 +53,12 @@
 </head>
 <body>
     <ul class="cb-slideshow">
-        <li><span>AAAA</span><div><h3>O·S·C·E·N·T</h3></div></li>
-        <li><span>Image 02</span><div><h3>IN·VEN·TO·RY</h3></div></li>
-        <li><span>Image 03</span><div><h3>SYS·TEM</h3></div></li>
-        <li><span>Image 04</span><div><h3>>> OS·I·S <<</h3></div></li>
+        <li><span>Image 01</span><div><h3>o·s·c·e·n·t</h3></div></li>
+        <li><span>Image 02</span><div><h3>in·ven·to·ry</h3></div></li>
+        <li><span>Image 03</span><div><h3>sys·tem</h3></div></li>
+        <li><span>Image 04</span><div><h3>OS·I·S</h3></div></li>
+        <li><span>Image 05</span><div><h3>o·s·c·e·n·t</h3></div></li>
+        <li><span>Image 06</span><div><h3>o·s·c·e·n·t</h3></div></li>
     </ul>
 
     <div id="app">
@@ -69,13 +71,13 @@
         @yield('content')
         {{-- </section> --}}
     </div>
-    <footer class="main-footer">
+    {{-- <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Final Year Project</b> KOE IIUM
         </div>
         <strong>Copyright &copy; 2019 <a href="https://www.instagram.com/oscent_iium/">Inventory System Oscent</a>.</strong> All rights
         reserved.
-    </footer>
+    </footer> --}}
         {{-- @include('inc.footer') --}}
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

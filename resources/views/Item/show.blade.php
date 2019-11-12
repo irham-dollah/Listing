@@ -1,7 +1,7 @@
 @extends ('layouts.home')
 
 @section('content')
-    <a href="/Item" class="btn btn-default">Return</a>
+    {{-- <a href="/Item" class="btn btn-default">Return</a> --}}
     <h1>{{$items->name}}</h1>
     <div>
         <p>Price: RM {{$items->price}}</p>

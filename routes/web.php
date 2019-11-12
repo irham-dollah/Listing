@@ -22,6 +22,7 @@ Route::get('/Dashboard', 'DashboardController@index');
 Route::resource('Item', 'ItemsController');
 Route::resource('User', 'UsersController');
 Route::resource('Order', 'OrdersController');
+Route::resource('Sale', 'SalesController');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {

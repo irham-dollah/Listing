@@ -1,7 +1,7 @@
 @extends ('layouts.home')
 
 @section('content')
-    <a href="/User" class="btn btn-default">Return</a>
+    {{-- <a href="/User" class="btn btn-default">Return</a> --}}
     <h1>Add User</h1>
     <br>
     {!! Form::open(['action'=>'UsersController@store','method'=>'POST'])!!}
@@ -27,12 +27,8 @@
                 </select>
             </div>
         </div>
+        <br>
         
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!! Form::close()!!} 
 @endsection

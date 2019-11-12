@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
 use App\Item;
+use App\Sale;
 
-class OrdersController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders=Order::all();
-        return view('Order.index')->with('orders',$orders);
+        $items=Item::all();
+        return view('Sale.index')->with('items',$items);
     }
 
     /**
@@ -26,8 +26,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        $items=Item::all();
-        return view('Order.create')->with('items',$items);
+        //
     }
 
     /**
@@ -44,13 +43,15 @@ class OrdersController extends Controller
             'quantity'=>'required|integer',
         ]);
         
-        $order=new Order;
-        $order->name=$request->get('name');
-        $order->price=$request->input('price');
-        $order->quantity=$request->input('quantity');
-        $order->save();
+        $sale=new Sale;
+        $sale->name=$request->get('name');
+        $sale->price=$request->get('price');
+        $sale->quantity=$request->input('quantity');
+        $sale->save();
         
-        return redirect('/Order')->with('success','Order added');
+        // $items->quantity=($items->quantity)-($sales)
+        
+        return redirect('/Sale')->with('success','Sale added');
     }
 
     /**
@@ -61,8 +62,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $orders=Order::find($id);
-        return view('Order.show')->with('orders',$orders);
+        //
     }
 
     /**
@@ -73,8 +73,7 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        $orders=Order::find($id);
-        return view('Order.edit')->with('orders',$orders);
+        //
     }
 
     /**
@@ -86,18 +85,7 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
-            'quantity'=>'required|integer',
-        ]);
-        
-        $order=Order::find($id);
-        $order->price=$request->input('price');
-        $order->quantity=$request->input('quantity');
-        $order->save();
-        
-        return redirect('/Order')->with('success','Order updated');
-
+        //
     }
 
     /**
@@ -108,9 +96,6 @@ class OrdersController extends Controller
      */
     public function destroy($id)
     {
-        $order = Order::find($id);
-        $order->delete();
-        return redirect('/Order')->with('success','Order Removed');
-
+        //
     }
 }

@@ -26,6 +26,12 @@
   <link rel="stylesheet" href="css/select2-bootstrap.css">
   <link rel="stylesheet" href="css/gh-pages.css">
   
+  {{-- <link href="select2.css" rel="stylesheet"/>
+    <script src="select2.js"></script>
+    <script>
+        $(document).ready(function() { $("#e1").select2(); });
+    </script> --}}
+
   <style>
         .center{
             text-align: center;
@@ -131,7 +137,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/StockOut" class="nav-link">
+                <a href="/Sale" class="nav-link">
                     <i class="fas fa-dollar-sign"></i>
                     <p>
                     Sale
@@ -218,8 +224,12 @@
     <!-- /.sidebar -->
     </aside>
     <div class="content-wrapper">
-        @include('inc.messages')
-        @yield('content')
+        <div class="content">
+            <div class="container-fluid">        
+                @include('inc.messages')
+                @yield('content')
+            </div>
+        </div>
     </div>
     @include('inc.footer')
   <!-- /.control-sidebar -->
@@ -236,6 +246,7 @@
 <script src="/assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/dist/js/demo.js"></script>
+
 @yield('bottom')
 </body>
 </html>

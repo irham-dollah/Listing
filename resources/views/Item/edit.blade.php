@@ -1,7 +1,7 @@
 @extends ('layouts.home')
 
 @section('content')
-    <a href="/Item" class="btn btn-default">Return</a>
+    {{-- <a href="/Item" class="btn btn-default">Return</a> --}}
     <h1>Edit Item</h1>
     <br>
     {!! Form::open(['action'=>['ItemsController@update',$items->id],'method'=>'POST'])!!}
