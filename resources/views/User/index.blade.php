@@ -32,7 +32,7 @@
                     @foreach($users as $user)
                        @if ($user->type != "super_admin")
                         <tr>
-                                <td></td>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->type }}</td>

@@ -38,16 +38,21 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            //'barcode_id'=>'required|string',
+            'id'=>'required|string',
             'name'=>'required|string',
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'buying_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'selling_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
             'category'=>'required|string',
             'minimum_no'=>'required|integer'
         ]);
         
         $item=new Item;
+        $item->id=$request->input('id');    
         $item->name=$request->input('name');
-        $item->price=$request->input('price');
+        $item->buying_price=$request->input('buying_price');
+        $item->selling_price=$request->input('selling_price');
         $item->quantity=$request->input('quantity');
         $item->category=$request->get('category');
         $item->minimum_no=$request->input('minimum_no');
@@ -90,17 +95,18 @@ class ItemsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'buying_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'selling_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
             'category'=>'required|string',
             'minimum_no'=>'required|integer'
         ]);
         
         $item=Item::find($id);
-        $item->price=$request->input('price');
+        $item->buying_price=$request->input('buying_price');
+        $item->selling_price=$request->input('selling_price');
         $item->quantity=$request->input('quantity');
-        $item->quantity=$request->input('quantity');
-        $item->category=$request->input('category');
+        $item->category=$request->get('category');
         $item->minimum_no=$request->input('minimum_no');
         $item->save();
         

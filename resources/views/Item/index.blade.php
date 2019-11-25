@@ -6,11 +6,6 @@
 @endsection
 
 @section('content')
-
-    {{-- <div class="box-header">
-        <a href="{{ route('Item.create') }}" class="btn btn-primary" ><i class="glyphicon glyphicon-plus"></i> Add Item</a>
-    </div> --}}
-
     <div class="box box-success box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">List of Item</h3>
@@ -20,12 +15,10 @@
             <table id="item-table" class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                        <th>Minimum No</th>
+                        <th>Buying Price</th>
+                        <th>Selling Price</th>
                         <th>Status</th>
                         <th>Action</th>
                         <th>Delete</th>
@@ -34,15 +27,25 @@
                 <tbody>
                     @foreach($items as $item)
                         <tr>
-                            <td></td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>RM {{ $item->price }}</td>
-                            <td>{{ $item->category }}</td>
-                            <td>{{ $item->minimum_no }}</td>
-                            <td>Available</td>
+                            <td>RM {{ $item->buying_price }}</td>
+                            <td>RM {{ $item->selling_price }}</td>
+                            @if ($item->quantity<$item->minimum_no)
+                                <td class="center">
+                                    <span class="label label-danger">Order Now !</span>
+                                </td>
+                            @elseif($item->quantity<($item->minimum_no+10))
+                                <td class="center">
+                                    <span class="label label-warning">In need</span>
+                                </td>
+                            @else
+                                <td class="center">
+                                    <span class="label label-success">Available</span>
+                                </td>
+                            @endif
                             <td class="center">
-                                <a href="{{ route('Item.show', ['id'=>$item->id ]) }}" class="btn btn-info btn-sm custom"><i class="glyphicon glyphicon-eye-open"></i> VIEW</a>
+                                <a href="{{ route('Item.show', ['id'=>$item->id ]) }}" class="btn btn-info btn-sm custom"><i class="glyphicon glyphicon-eye-open"></i> MORE</a>
                                 <a href="{{ route('Item.edit', ['id'=>$item->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a>
                             </td>
                             

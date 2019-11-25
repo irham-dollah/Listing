@@ -13,16 +13,17 @@
 
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-Route::get('/', 'PagesController@index');
-Route::get('/StockOut', 'PagesController@StockOut');
+Route::get('/', 'PagesController@index');//=auth.login
 Auth::routes();
 
-Route::get('/Dashboard', 'DashboardController@index');
+// Route::get('Dashboard', 'DashboardController@index');
 
 Route::resource('Item', 'ItemsController');
 Route::resource('User', 'UsersController');
 Route::resource('Order', 'OrdersController');
 Route::resource('Sale', 'SalesController');
+// Route::resource('Dashboard', 'UserChartController');
+Route::get('Dashboard', 'UserChartController@index');
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {

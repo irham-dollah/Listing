@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Item;
 use App\Sale;
+use App\Item;
 
 class SalesController extends Controller
 {
@@ -15,8 +15,9 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $items=Item::all();
-        return view('Sale.index')->with('items',$items);
+        // $items=Item::orderBy('name','ASC')->get()->pluck('name','id');
+        $sales=Sale::all();
+        return view('Sale.index')->with('sales',$sales);
     }
 
     /**
@@ -26,7 +27,8 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+        $items=Item::all();
+        return view('Sale.create')->with('items',$items);;
     }
 
     /**
@@ -38,19 +40,24 @@ class SalesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required|string',
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'item_id'=>'required|integer',
+            //'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
         ]);
         
+        // $item_id=Item::where('barcode_id',$request->barcode_id)->first()->id;
+        $item=Item::FindOrFail($request->item_id);
+        // $user=User::FindOrFail($request->seller_id);
+        $item->quantity -= ($request->quantity);
+
         $sale=new Sale;
-        $sale->name=$request->get('name');
-        $sale->price=$request->get('price');
+        $sale->seller_id=$request->get('seller_id');
+        $sale->item_id=$item->id;
+        $sale->price=$item->selling_price * $request->input('quantity');
         $sale->quantity=$request->input('quantity');
         $sale->save();
-        
-        // $items->quantity=($items->quantity)-($sales)
-        
+        $item->save();
+
         return redirect('/Sale')->with('success','Sale added');
     }
 
@@ -73,7 +80,8 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sales=Sale::find($id);
+        return view('Sale.edit')->with('sales',$sales);
     }
 
     /**
@@ -85,7 +93,21 @@ class SalesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            //'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'quantity'=>'required|integer',
+        ]);
+        
+        $sale=Sale::find($id);
+        $item=Item::FindOrFail($sale->item_id);
+        $item->quantity = $item->quantity + $sale->quantity - $request->quantity;
+        $sale->quantity=$request->input('quantity');
+        $sale->price=$item->selling_price * $request->input('quantity');
+        
+        $item->save();
+        $sale->save();
+        
+        return redirect('/Sale')->with('success','Sale updated');
     }
 
     /**
@@ -96,6 +118,8 @@ class SalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale = Sale::find($id);
+        $sale->delete();
+        return redirect('/Sale')->with('success','Sale Removed');
     }
 }

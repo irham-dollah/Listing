@@ -39,17 +39,25 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required|string',
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'item_id'=>'required|integer',
+            //'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
         ]);
         
+        $item=Item::FindOrFail($request->item_id);
+
         $order=new Order;
-        $order->name=$request->get('name');
-        $order->price=$request->input('price');
+        $order->pic_id=$request->get('pic_id');
+        $order->status=$request->get('status');
+        $order->item_id=$item->id;
+        if ($request->get('status')=='Complete') {
+            $item->quantity += $request->input('quantity');
+        }
+        $order->price=$item->buying_price * $request->input('quantity');
         $order->quantity=$request->input('quantity');
         $order->save();
-        
+        $item->save();
+
         return redirect('/Order')->with('success','Order added');
     }
 
@@ -87,13 +95,27 @@ class OrdersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            //'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
         ]);
         
         $order=Order::find($id);
-        $order->price=$request->input('price');
+        $item=Item::FindOrFail($order->item_id);
+        $order->price=$item->buying_price * $request->input('quantity');
+
+        if ($order->status=='Complete' && $request->get('status')=='Complete') {
+            $item->quantity = $item->quantity - $order->quantity + $request->input('quantity');
+        }
+        elseif ($order->status=='Incomplete' && $request->get('status')=='Complete') {
+            $item->quantity += $request->input('quantity');
+        }
+        elseif ($order->status=='Complete' && $request->get('status')=='Incomplete') {
+            $item->quantity -= $request->input('quantity');
+        }
+        $order->status=$request->get('status');
         $order->quantity=$request->input('quantity');
+
+        $item->save();
         $order->save();
         
         return redirect('/Order')->with('success','Order updated');

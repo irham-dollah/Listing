@@ -15,9 +15,6 @@
                 <img src="{{asset('images/logo.png')}}" width="50" height="35">
             </a>
         </div>
-        {{-- <div class="navbar">
-            <h3>WELCOME</h3>
-        </div> --}}
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
@@ -27,7 +24,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ url('/') }}">Login</a></li>
             </ul>
         </div>
     </div>

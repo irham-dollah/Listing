@@ -5,6 +5,7 @@
     <h1>Edit User</h1>
     <br>
     {!! Form::open(['action'=>['UsersController@update',$users->id],'method'=>'POST'])!!}
+        {{ csrf_field() }}
         <div class="form-group">
             {{Form::label('name','Name')}}
             {{-- {{Form::text('name','',['class'=>'form-control','placeholder'=>'Put the name of item'])}} --}}

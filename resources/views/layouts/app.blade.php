@@ -16,22 +16,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    
-    {{-- <link href="https://imaluum.iium.edu.my/bower_components/admin-lte/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons 4.4.0 -->
-    <link href="https://imaluum.iium.edu.my/bower_components/admin-lte/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons 2.0.1 -->
-    <link href="https://imaluum.iium.edu.my/bower_components/admin-lte/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <!-- <link href="https://imaluum.iium.edu.my/bower_components/admin-lte/dist/css/AdminLTE.css" rel="stylesheet" type="text/css" /> -->
-    <!-- css animation -->
-    <link href="https://imaluum.iium.edu.my/CSS3FullscreenSlideshow/css/style2.css" rel="stylesheet" type="text/css" /> --}}
-    
-    {{-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> --}}
+ 
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/slideshow/css/style2.css') }}" />
 	<script type="text/javascript" src="{{ asset('assets/slideshow/js/modernizr.custom.86080.js') }}"></script>
 
@@ -63,23 +54,11 @@
 
     <div id="app">
         @include('inc.navbar')
-        {{-- <div class="container"> --}}
     </div>
     <div classs="contain-wrapper">
-        {{-- <section class="content container-fluid"> --}}
         @include('inc.messages')
         @yield('content')
-        {{-- </section> --}}
     </div>
-    {{-- <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Final Year Project</b> KOE IIUM
-        </div>
-        <strong>Copyright &copy; 2019 <a href="https://www.instagram.com/oscent_iium/">Inventory System Oscent</a>.</strong> All rights
-        reserved.
-    </footer> --}}
-        {{-- @include('inc.footer') --}}
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>

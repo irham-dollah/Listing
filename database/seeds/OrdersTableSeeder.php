@@ -8,9 +8,11 @@ class OrdersTableSeeder extends Seeder
     public function run()
     {
         Order::create([
-            'name'=>'Keropok',
-            'price'=>3.20,
-            'quantity'=>30,
+            'item_id'=>'8850100002976',
+            'pic_id'=>'1',
+            'price'=>8.00,
+            'status'=>'Incomplete',
+            'quantity'=>10,
         ]);
     }
 }
