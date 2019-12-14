@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Sale;
 use App\Item;
+use App\Sale_Item;
 
 class SalesController extends Controller
 {
@@ -15,7 +16,6 @@ class SalesController extends Controller
      */
     public function index()
     {
-        // $items=Item::orderBy('name','ASC')->get()->pluck('name','id');
         $sales=Sale::all();
         return view('Sale.index')->with('sales',$sales);
     }

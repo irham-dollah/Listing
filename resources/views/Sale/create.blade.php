@@ -1,7 +1,19 @@
 @extends ('layouts.home')
 
+@section('top')
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+@endsection
+
 @section('content')
     <h1>Add Sale</h1>
+    <div class="box-body">
+    <div class="form-group-left">
+        <label for="gross_amount" class="col-sm-12 control-label">Date: <?php echo date('Y-m-d') ?></label>
+    </div>
+    <div class="form-group">
+        <label for="gross_amount" class="col-sm-12 control-label">Date: <?php echo date('h:i a') ?></label>
+    </div>
+    </div>
     <br>
     {!! Form::open(['action'=>'SalesController@store','method'=>'POST'])!!}
         {{ csrf_field() }}
@@ -28,6 +40,10 @@
                     </select>
                 </div>
         </div>--}} 
+        <div class="form-group" style="width:500px">
+            {{Form::label('#','Price')}}
+            {{Form::text('#','',['class'=>'form-control','placeholder'=>'price'])}}
+        </div>
         <br> 
         <div class="form-group" style="width:500px">
             {{Form::label('quantity','Quantity')}}

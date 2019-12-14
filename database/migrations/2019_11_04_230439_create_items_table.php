@@ -15,9 +15,7 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //$table->increments('id');
-            //$table->string('barcode_id');
-            $table->string('name');
+            $table->string('name',100);
             $table->decimal('buying_price', 5, 2);
             $table->decimal('selling_price', 5, 2);
             $table->integer('quantity');

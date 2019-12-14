@@ -21,9 +21,8 @@ class CreateOrdersTable extends Migration
             $table->integer('quantity');
             $table->string('status');
             $table->timestamps();
-
-            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            // $table->foreign('name')->references('name')->on('users')->onDelete('cascade');
+            // $table->foreign('item_id')->references('id')->on('items')->onUpdate('cascade');
+            // $table->foreign('pic_id')->references('id')->on('users')->onUpdate('cascade');
         });
     }
 

@@ -44,12 +44,12 @@
 </head>
 <body>
     <ul class="cb-slideshow">
-        <li><span>Image 01</span><div><h3>o·s·c·e·n·t</h3></div></li>
-        <li><span>Image 02</span><div><h3>in·ven·to·ry</h3></div></li>
-        <li><span>Image 03</span><div><h3>sys·tem</h3></div></li>
-        <li><span>Image 04</span><div><h3>OS·I·S</h3></div></li>
-        <li><span>Image 05</span><div><h3>o·s·c·e·n·t</h3></div></li>
-        <li><span>Image 06</span><div><h3>o·s·c·e·n·t</h3></div></li>
+        <li><span>Image 01</span><div></div></li>
+        <li><span>Image 02</span><div></div></li>
+        <li><span>Image 03</span><div></div></li>
+        <li><span>Image 04</span><div></div></li>
+        <li><span>Image 05</span><div></div></li>
+        <li><span>Image 06</span><div></div></li>
     </ul>
 
     <div id="app">

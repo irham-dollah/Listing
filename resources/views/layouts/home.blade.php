@@ -88,10 +88,10 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     {{-- <li class="{{  request()->is('Dashboard') ? 'active' : ''  }}"><a href="{{ url('/Dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> --}}
                     <li class="header">SALE</li>
-                    <li class="{{  request()->is('Sale/create') ? 'active' : ''  }}"><a href="{{ route('Sale.create') }}"><i class="fas fa-dollar-sign"></i> <span>New Sale</span></a></li>        
-                    <li class="{{  request()->is('Sale') ? 'active' : ''  }}"><a href="{{ route('Sale.index') }}"><i class="fas fa-dollar-sign"></i> <span>View Sale</span></a></li>        
+                    <li class="{{  request()->is('Cart/*') ? 'active' : ''  }}"><a href="{{ route('Cart.index') }}"><i class="fas fa-dollar-sign"></i> <span>New Sale</span></a></li>        
+                    <li class="{{  request()->is('sale/*') ? 'active' : ''  }}"><a href="{{ route('Sale.index') }}"><i class="fas fa-dollar-sign"></i> <span>View Sale</span></a></li>        
                     <li class="header">ORDER</li>
-                    <li class="{{  request()->is('Order/create') ? 'active' : ''  }}"><a href="{{ route('Order.create') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
+                    <li class="{{  request()->is('order/*') ? 'active' : ''  }}"><a href="{{ route('Order.create') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
                     <li class="{{  request()->is('Order') ? 'active' : ''  }}"><a href="{{ route('Order.index') }}"><i class="fas fa-shopping-cart"></i> <span>View Order</span></a></li>        
                     <li class="header">ITEM</li>
                     <li class="{{  request()->is('Item/create') ? 'active' : ''  }}"><a href="{{ route('Item.create') }}"><i class="fas fa-box-open"></i> <span>New Item</span></a></li>        
@@ -125,9 +125,10 @@
 <!--Select2 -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <!--Chart-->
-{{-- <script src="http://www.wrraptheme.com/templates/square/laravel/public/assets/plugins/jquery-knob/jquery.knob.min.js"></script>
-<script src="http://www.wrraptheme.com/templates/square/laravel/public/assets/js/pages/charts/jquery-knob.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<!--Cart-->
+<script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.min.js') }} "></script>
+<script src="{{ asset('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }} "></script>
 
 
 @yield('bottom')

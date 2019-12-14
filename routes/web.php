@@ -22,6 +22,7 @@ Route::resource('Item', 'ItemsController');
 Route::resource('User', 'UsersController');
 Route::resource('Order', 'OrdersController');
 Route::resource('Sale', 'SalesController');
+Route::resource('Cart', 'CartsController');
 // Route::resource('Dashboard', 'UserChartController');
 Route::get('Dashboard', 'UserChartController@index');
 

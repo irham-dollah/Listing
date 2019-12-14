@@ -11,11 +11,11 @@
         </div>
         <div class="form-group">
             {{Form::label('item_id','Item ID')}}
-            <p>{{ $sales->item_id }}</p>
+            <p>{{ $sales->sale_item->item_id }}</p>
         </div>
         <div class="form-group">
             {{Form::label('price','Total Sale')}}
-            <p>{{$sales->price}}</p>
+            <p>{{$sales->total_price}}</p>
         </div>
         <div class="form-group" style="width:500px">
             {{Form::label('quantity','Quantity')}}

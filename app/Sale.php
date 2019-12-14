@@ -16,4 +16,8 @@ class Sale extends Model
         return $this->belongsTo('App\User','seller_id','id');
     }
 
+    public function sale_item()
+    {
+        return $this->belongsTo('App\Sale_Item','id','sale_id');
+    }
 }

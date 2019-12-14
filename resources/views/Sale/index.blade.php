@@ -17,12 +17,12 @@
                     <tr>
                         <th>No</th>
                         <th>Seller</th>
-                        <th>Item ID</th>
-                        <th>Item Name</th>
-                        <th>Quantity</th>
+                        {{-- <th>Item ID</th>
+                        <th>Item Name</th> --}}
+                        {{-- <th>Quantity</th> --}}
                         <th>Total Sale</th>
                         <th>Detail</th>
-                        <th>Action</th>
+                        {{-- <th>Action</th> --}}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -31,15 +31,15 @@
                         <tr>
                             <td>{{ $sale->id }}</td>
                             <td>{{ $sale->user->name }}</td>
-                            <td>{{ $sale->item_id }}</td>
-                            <td>{{ $sale->item->name }}</td>
-                            <td>{{ $sale->quantity }}</td>
-                            <td>RM {{ $sale->price }}</td>
+                            {{-- <td>{{ $sale->item_id }}</td>
+                            <td>{{ $sale->item->name }}</td>--}}
+                            {{-- <td>{{ $sale->sale_items->quantity }}</td>  --}}
+                            <td>RM {{ $sale->total_price }}</td>
                             <td>{{ $sale->created_at }}</td>
                             @if(Auth::user()->type=='admin'||Auth::user()->type=='super_admin')
-                                <td class="center">
+                                {{-- <td class="center">
                                     <a href="{{ route('Sale.edit', ['id'=>$sale->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a>
-                                </td> 
+                                </td>  --}}
                                 <td class="center">
                                     <form action="{{ route('Sale.destroy', ['id'=>$sale->id ]) }}" method="post" onsubmit="return confirm('Delete sale {{ $sale->name }} permanently?')" >
                                         <input type="hidden" name="_method" value="DELETE">

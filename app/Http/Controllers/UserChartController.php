@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Sale;
 use App\Item;
 use Carbon\Carbon;
+use App\Sale_Item;
 
 class UserChartController extends Controller
 {
@@ -52,12 +53,16 @@ class UserChartController extends Controller
                    ->displayLegend('Capital', 'Sale', 'Profit');
 
         $sales=Sale::whereDate('created_at', Carbon::today())->get();
+        $sale_items=Sale_Item::whereDate('created_at', Carbon::today())->get();
         foreach ($sales as $sale) {
             // (double)$this->dailySale += (double)$sale->price;
-            (double)$this->dailySale += number_format((double)$sale->price, 2, '.', '');
-            $item=Item::find($sale->item_id);
-            // (double)$this->dailyCapital += (double)($item->buying_price * $sale->quantity);
-            (double)$this->dailyCapital += number_format((double)($item->buying_price * $sale->quantity), 2, '.', '');
+            (double)$this->dailySale += number_format((double)$sale->total_price, 2, '.', '');
+            // $item=Item::find($sale_items->item_id);
+            // (double)$this->dailyCapital += number_format((double)($item->buying_price * $sale_item->quantity), 2, '.', '');
+        }
+        foreach ($sale_items as $sale_item) {
+        $item=Item::find($sale_item->item_id);
+        (double)$this->dailyCapital += number_format((double)($item->buying_price * $sale_item->quantity), 2, '.', '');
         }
         // (double)$this->dailyProfit = (double)$this->dailySale - (double)$this->dailyCapital;
         (double)$this->dailyProfit = number_format((double)$this->dailySale - (double)$this->dailyCapital, 2, '.', '');
