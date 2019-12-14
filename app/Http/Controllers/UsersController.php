@@ -38,14 +38,14 @@ class UsersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'matric_no' => 'required|integer|digits:7|unique:users',
+            'password' => 'required|string|min:6|confirmed',
             'type'=>'required',
         ]);
 
         $user= new User;
         $user->name=$request->input('name');
-        $user->email=$request->input('email');
+        $user->matric_no=$request->input('matric_no');
         $user->password=bcrypt($request->input('password'));
         $user->type=$request->input('type');
         $user->save();
@@ -87,17 +87,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'type' => 'required',
         ]);
         
         $user=User::find($id);
-        $user->name=$request->input('name');
-        $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
-        $user->type=$request->get('type');
         $user->save();
         
         return redirect('/User')->with('success','User updated');

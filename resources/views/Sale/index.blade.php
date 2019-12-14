@@ -15,27 +15,31 @@
             <table id="sale-table" class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>Seller</th>
-                        {{-- <th>Item ID</th>
-                        <th>Item Name</th> --}}
-                        {{-- <th>Quantity</th> --}}
                         <th>Total Sale</th>
                         <th>Detail</th>
-                        {{-- <th>Action</th> --}}
-                        <th>Action</th>
+                        <th>View Item</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($sales as $sale)
                         <tr>
-                            <td>{{ $sale->id }}</td>
+                            {{-- <td>{{ $sale->id }}</td> --}}
                             <td>{{ $sale->user->name }}</td>
                             {{-- <td>{{ $sale->item_id }}</td>
                             <td>{{ $sale->item->name }}</td>--}}
-                            {{-- <td>{{ $sale->sale_items->quantity }}</td>  --}}
+                            {{-- @if ($sale->id == $sale->sale_item->sale_id)
+                                @foreach ($sale_items as $sale_item)
+                                    <td>{{ $sale->sale_item->item_id }}:{{ $sale->sale_item->quantity }}</td>
+                                @endforeach
+                            @endif  --}}
                             <td>RM {{ $sale->total_price }}</td>
                             <td>{{ $sale->created_at }}</td>
+                            <td class="center">
+                                <a href="{{ route('Sale.show', ['id'=>$sale->id ]) }}" class="btn btn-info btn-sm custom"><i class="glyphicon glyphicon-eye-open"></i> MORE</a>
+                                {{-- <a href="{{ route('Item.edit', ['id'=>$item->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a> --}}
+                            </td>
                             @if(Auth::user()->type=='admin'||Auth::user()->type=='super_admin')
                                 {{-- <td class="center">
                                     <a href="{{ route('Sale.edit', ['id'=>$sale->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a>

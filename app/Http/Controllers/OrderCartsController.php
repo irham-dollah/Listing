@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Cart;
 
-class CartsController extends Controller
+class OrderCartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,8 @@ class CartsController extends Controller
     public function index()
     {
         $carts = Cart::content();
-        return view ('Cart.index', compact('carts'));
+        $items=Item::all();
+        return view ('OrderCart.index', compact('items','carts'));
     }
 
     /**
@@ -62,9 +63,9 @@ class CartsController extends Controller
         Cart::destroy();
         
         if ($total == 0) {
-            return redirect()->route('Cart.index')->with('statusFail', 'No item in cart');
+            return redirect()->route('OrderCart.index')->with('statusFail', 'No item in cart');
         } else {
-            return redirect()->route('Cart.index')->with('statusSuccess', 'Successfully Paid');
+            return redirect()->route('OrderCart.index')->with('statusSuccess', 'Successfully Paid');
         }
     }
 
@@ -85,9 +86,9 @@ class CartsController extends Controller
                 'qty' => 1,
                 'price' =>$item->selling_price
             ]);
-            return redirect()->route('Cart.index')->with('statusSuccess', 'Item Added');
+            return redirect()->route('OrderCart.index')->with('statusSuccess', 'Item Added');
         } else {
-            return redirect()->route('Cart.index')->with('statusFail', 'Item Not Found');
+            return redirect()->route('OrderCart.index')->with('statusFail', 'Item Not Found');
         }
     }
 
@@ -101,7 +102,7 @@ class CartsController extends Controller
     {
         $item = Cart::get($rowId);
         Cart::update($rowId, ['qty'=>$item->qty - 1]);
-        return redirect()->route('Cart.index');
+        return redirect()->route('OrderCart.index');
     }
 
     /**
@@ -114,7 +115,7 @@ class CartsController extends Controller
     {
         $item = Cart::get($rowId);
         Cart::update($rowId, ['qty'=>0]);
-        return redirect()->route('Cart.index');
+        return redirect()->route('OrderCart.index');
     }
 
     public function add($id, $quantity) 
@@ -149,6 +150,6 @@ class CartsController extends Controller
     public function destroy($id)
     {
         Cart::destroy();
-        return redirect()->route('Cart.index')->with('statusSuccess', 'Cart Successfully Cleared');
+        return redirect()->route('OrderCart.index')->with('statusSuccess', 'Cart Successfully Cleared');
     }
 }

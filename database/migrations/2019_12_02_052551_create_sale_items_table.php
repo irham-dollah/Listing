@@ -14,12 +14,14 @@ class CreateSaleItemsTable extends Migration
     public function up()
     {
         Schema::create('sale__items', function (Blueprint $table) {
-        $table->increments('id');
         $table->bigInteger('sale_id')->unsigned();
         $table->bigInteger('item_id')->unsigned();
         $table->integer('quantity');
         $table->decimal('subtotal',10,2);
-        $table->timestamps(); });
+        $table->timestamps(); 
+        $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+        $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade')->onUpdate('cascade');
+    });
     }
     /**
      * Reverse the migrations.

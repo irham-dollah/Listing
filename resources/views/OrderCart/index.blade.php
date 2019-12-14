@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <h3 style="margin-top:0px">Add Sale</h3>
+    <h3 style="margin-top:0px">Add Order</h3>
     <!-- general form elements -->
     @if(session('statusSuccess'))
         <div class="box-body">
@@ -26,7 +26,7 @@
     @endif
 
     <!-- form start -->
-    <form role="form" method="POST" action="{{ route('Cart.store')  }}" autocomplete="off">
+    <form role="form" method="POST" action="{{ route('OrderCart.store')  }}" autocomplete="off">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-lg-4">
@@ -35,7 +35,7 @@
                         <label>Date</label>
                         {{-- <p>{{ date('d/m/Y') }}</p> --}}
                         <p>{{ date('d/m/Y')}}</p>
-                        <label>Cashier</label>
+                        <label>PIC</label>
                         {{-- <p>{{ auth()->user()->name }}</p> --}}
                         <p>{{ auth()->user()->name }}</p>
                     </div>
@@ -45,14 +45,20 @@
                 <div class="box box-solid">
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('barcode') ? ' has-error' : '' }}">
-                            <label>Barcode Number</label>
-                            <input type="text" name="barcode" id="barcode" class="form-control" placeholder="Enter barcode number" autofocus required >
-                            @if ($errors->has('barcode'))
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <strong><i class="icon fa fa-ban"></i> Alert!</strong> &nbsp; {{ $errors->first('barcode') }}
-                                </div>
-                            @endif
+                            <label><h4> Select Item</h4></label>
+                            <br>
+                            <div >
+                                <select class="js-example-basic-single" name="barcode" id="barcode" style="width:200px">
+                                    <option value="#">Snack</option>
+                                    @foreach ($items as $item)
+                                        @if ($item->category=='snack')
+                                            <option value="{{$item->id}}">{{$item->name}}</option>        
+                                        @endif
+                                    @endforeach
+                                    <option value="#">Alabama</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-success pull-right"><i class="fa fa-shopping-cart"></i> ADD</button>
@@ -63,18 +69,11 @@
             <div class="col-lg-4">
                 <div class="box box-solid">
                     <div class="box-body">
-                        <h4>Total 
-                            <b id="total_price">RM {{ Cart::subtotal() }}</b>   
-                            <h4><p>Balance: <b id="balance">RM 0.00</b>
-                                <br>
-                                <div class="form-group">
-                                        <input style="width:200px" type="number" class="form-control pull-left abc" placeholder="Enter amount">  
-                                </div>
-                                <span class="button">
-                                    <a href="{{ route('Cart.create') }}" class="btn btn-success pull-right" ><i class="fa fa-money"></i> Pay</a>
-                                </span>
-                            </p></h4>
-                        </h4>
+                        <h3>Total:  
+                        <h2><b id="total_price">RM {{ Cart::subtotal() }}</b> 
+                            <span class="button">
+                                <a href="{{ route('OrderCart.create') }}" class="btn btn-success pull-right" ><i class="fa fa-money"></i> Submit</a>
+                            </span></h3>  
                     </div>
                 </div>
             </div>
@@ -83,12 +82,12 @@
 
     <div class="box box-success box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Carts</h3>
+            <h3 class="box-title">Items</h3>
             <div class="pull-right box-tools">
-                <form action="{{ route('Cart.destroy', [ 'id' => '1' ])}}" method="post" onsubmit="return confirm('Delete all cart items?')" >
+                <form action="{{ route('OrderCart.destroy', [ 'id' => '1' ])}}" method="post" onsubmit="return confirm('Delete all items?')" >
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <button class="btn btn-danger" type="submit" ><i class="glyphicon glyphicon-trash"></i> CLEAR CART</button>
+                    <button class="btn btn-danger" type="submit" ><i class="glyphicon glyphicon-trash"></i> CLEAR ITEM</button>
                 </form>
             </div>
         </div>
@@ -161,18 +160,18 @@
         $('.remove').click(function(e){
             e.preventDefault();
             var rowId = $(this).attr('rowId');
-            window.location.href = "{{ url('Cart') }}"+'/'+rowId+'/edit';
+            window.location.href = "{{ url('OrderCart') }}"+'/'+rowId+'/edit';
             // window.location.href = "{{ url('Cart/add') }}"+'/'+rowId+'/'+'0';
         });
+    });
+    $(document).ready(function() {
+    $('.js-example-basic-single').select2();
     });
 </script>
 <script>
     
     $('.form-group').on('input', '.abc', function(){
         var currbalance=0;
-        // if (totalSum==0) {
-        //     totalSum=Cart::subtotal() ;
-        // }
         var totalSum=0;
         $('.form-group .prc').each(function(){
             var quantity = $(this).val();
@@ -213,7 +212,7 @@
             // window.location.href = "{{ url('Cart/add') }}"+'/'+rowId+'/'+quantity; 
             $.ajax({
             type: 'get',
-            url: '/Cart/add/'+rowId+'/'+quantity,
+            url: '/OrderCart/add/'+rowId+'/'+quantity,
             success: function(data){
                 if (data == 'success') {               
                     $('#'+ rowId + '_show').html('RM ' + item_amount);

@@ -95,6 +95,8 @@ class ItemsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'id'=>'required|string',
+            'name'=>'required|string',
             'buying_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'selling_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
@@ -103,6 +105,8 @@ class ItemsController extends Controller
         ]);
         
         $item=Item::find($id);
+        $item->id=$request->input('id');
+        $item->name=$request->input('name');
         $item->buying_price=$request->input('buying_price');
         $item->selling_price=$request->input('selling_price');
         $item->quantity=$request->input('quantity');

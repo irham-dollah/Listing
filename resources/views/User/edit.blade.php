@@ -12,13 +12,22 @@
             <p>{{$users->name}}</p>
         </div>
         <div class="form-group">
-            {{Form::label('email','Email')}}
-            {{Form::text('email',$users->email,['class'=>'form-control','placeholder'=>'Put your email'])}}
+            {{Form::label('matric_no','Matric No')}}
+            <p>{{$users->matric_no}}</p>
         </div>
-        <div class="form-group">
-            {{Form::label('password','password')}}
-            {{Form::text('password',$users->password,['class'=>'form-control','placeholder'=>'Put the password'])}}
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="width:500px">
+            {{Form::label('password','New Password')}}
+            <input id="password" type="password" class="form-control" name="password" required>
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
         </div>
+        <div class="form-group" style="width:500px" type="password" name="password_confirmation">
+            {{Form::label('password-confirm','Confirm Password')}}
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+        </div> 
         <br>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}

@@ -20,27 +20,25 @@
             <table id="user-table" class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>Member No</th>
                         <th>Name</th>
-                        <th>Email</th>
                         <th>Category</th>
                         <th>Created At</th>
-                        <th>Delete</th>
+                        <th>Forgot Password</th>
+                        <th>Remove User</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
                        @if ($user->type != "super_admin")
                         <tr>
-                                <td>{{ $user->id }}</td>
+                                <td>#{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
                                 <td>{{ $user->type }}</td>
                                 <td>{{ $user->created_at }}</td>
-                                {{-- <td class="center">
-                                    <a href="{{ route('User.show', ['id'=>$user->id ]) }}" class="btn btn-info btn-sm custom"><i class="glyphicon glyphicon-eye-open"></i> VIEW</a>
+                                <td class="center">
                                     <a href="{{ route('User.edit', ['id'=>$user->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a>
-                                </td> --}}
+                                </td>
                                 
                                 <td class="center">
                                     <form action="{{ route('User.destroy', ['id'=>$user->id ]) }}" method="post" onsubmit="return confirm('Delete order {{ $user->name }} permanently?')" >

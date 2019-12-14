@@ -17,8 +17,8 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/fonts/googleFont/sourceSansPro">    
+    {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
     {{-- <link rel="stylesheet" href="css/bootstrap.min.css"> --}}
     
     <!-- Theme style -->
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="/fonts/googleFont/sourceSansPro">
 
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
@@ -35,15 +35,6 @@
         .center{
             text-align: center;
         }
-        /* body{
-            background-color: whitesmoke;
-            counter-reset: Count-Value;    
-        }
-        tr td:first-child:before
-        {
-        counter-increment: Count-Value;   
-        content: counter(Count-Value);
-        } */
     </style>
     @yield('top')
 </head>
@@ -91,7 +82,7 @@
                     <li class="{{  request()->is('Cart/*') ? 'active' : ''  }}"><a href="{{ route('Cart.index') }}"><i class="fas fa-dollar-sign"></i> <span>New Sale</span></a></li>        
                     <li class="{{  request()->is('sale/*') ? 'active' : ''  }}"><a href="{{ route('Sale.index') }}"><i class="fas fa-dollar-sign"></i> <span>View Sale</span></a></li>        
                     <li class="header">ORDER</li>
-                    <li class="{{  request()->is('order/*') ? 'active' : ''  }}"><a href="{{ route('Order.create') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
+                    <li class="{{  request()->is('OrderCart/*') ? 'active' : ''  }}"><a href="{{ route('OrderCart.index') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
                     <li class="{{  request()->is('Order') ? 'active' : ''  }}"><a href="{{ route('Order.index') }}"><i class="fas fa-shopping-cart"></i> <span>View Order</span></a></li>        
                     <li class="header">ITEM</li>
                     <li class="{{  request()->is('Item/create') ? 'active' : ''  }}"><a href="{{ route('Item.create') }}"><i class="fas fa-box-open"></i> <span>New Item</span></a></li>        
@@ -116,8 +107,6 @@
 <script src="/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-{{-- <script src="/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> --}}
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>

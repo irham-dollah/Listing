@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+// use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -36,4 +37,18 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function username()
+    {
+        return 'matric_no';
+    }
+    // protected function validateLogin(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         $this->username() => 'required', 
+    //         'password' => 'required',
+    //         'matric_no' => 'required',
+    //         // new rules here
+    //     ]);
+    // }
 }

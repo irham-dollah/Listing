@@ -26,7 +26,7 @@
             </div>
         </div>
         <br>
-        <div class="form-group" style="width:500px">
+        <div class="form-group" style="width:250px">
             {{Form::label('item_id','ID')}}
             {{Form::text('item_id','',['class'=>'form-control','placeholder'=>'Scan the barcode'])}}
         </div>

@@ -69,7 +69,10 @@ class SalesController extends Controller
      */
     public function show($id)
     {
-        //
+        $sales=Sale::find($id);
+        $sale_items=Sale_Item::where('sale_id', $sales->id)->get();
+        // $items=Item::where('id', $sale_items->item_id)->get();
+        return view('Sale.show', compact('sale_items','sales'));
     }
 
     /**

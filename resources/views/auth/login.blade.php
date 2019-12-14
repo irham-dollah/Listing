@@ -5,21 +5,21 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('matric_no') ? ' has-error' : '' }}">
+                            <label for="matric_no" class="col-md-4 control-label">Matric No</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="matric_no" class="form-control" name="matric_no" value="{{ old('matric_no') }}" required autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('matric_no'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('matric_no') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -55,9 +55,9 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
+                                {{-- <a class="#">
+                                    Forgot Your Password? Contact your administrator.
+                                </a> --}}
                             </div>
                         </div>
                     </form>
