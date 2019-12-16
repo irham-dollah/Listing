@@ -21,13 +21,16 @@
                 &nbsp;
             </ul>
             <ul class="center">
-                <h5 class="nav navbar-text" 
-                style="font-family:verdana;color:DodgerBlue;
+                <h4 class="nav navbar-text" 
+                style="font-family:verdana;color:DodgerBlue;font-size:20px;
                 ">
                 {{-- border: 1px solid powderblue; padding: 10px; --}}
-                 > OSCENT INVENTORY SYSTEM :: <b> O . S . I . S </b>:: OSCENT INVENTORY SYSTEM :: <b> O . S . I . S </b> :: OSCENT INVENTORY SYSTEM <
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                ::&nbsp<b> O . S . I . S </b> 
+                <i style="color:white;">&nbsp :: OSCENT INVENTORY SYSTEM :: &nbsp</i>
+                <b>O . S . I . S </b> &nbsp ::
                     {{-- <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwimmKC8kLTmAhXi_XMBHTPWCAYQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.shutterstock.com%2Fvideo%2Fclip-2872816-god-name-hand-arabic-phrase-islamic-writing&psig=AOvVaw0fPcPkFB2DrINPWwTzYQJN&ust=1576377968983327" width="50" height="35"> --}}
-                </h5>
+                </h4>
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

@@ -19,6 +19,8 @@ class CartsController extends Controller
      */
     public function index()
     {
+        // Cart::instance('sale')->content();
+        // Cart::instance('sales')->content();
         $carts = Cart::content();
         return view ('Cart.index', compact('carts'));
     }
@@ -32,7 +34,7 @@ class CartsController extends Controller
     {
         $user_id = Auth::user()->id;
         $total = 0;
-
+        
         $carts = Cart::content();
         foreach ($carts as $cart){
             $total += $cart->subtotal;

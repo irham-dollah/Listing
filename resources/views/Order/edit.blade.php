@@ -11,18 +11,18 @@
             <p>{{$orders->user->name}}</p>
         </div>
         <div class="form-group">
-            {{Form::label('name','Name')}}
-            <p>{{ $orders->item->name }}</p>
+            {{Form::label('name','Item')}}
+            <p>{{ $orders->item->name}}</p>
         </div>
         <div class="form-group">
-            {{Form::label('item_id','ID')}}
+            {{Form::label('total_price','Total Price')}}
             {{-- {{Form::text('name','',['class'=>'form-control','placeholder'=>'Put the name of item'])}} --}}
-            <p>{{$orders->item_id}}</p>
+            <p>{{$orders->total_price}}</p>
         </div>
-        <div class="form-group" style="width:500px">
+        {{-- <div class="form-group" style="width:500px">
             {{Form::label('price','Price')}}
             <p>{{$orders->price}}</p>
-        </div>
+        </div> --}}
         <div class="form-group" style="width:500px">
             {{Form::label('quantity','Quantity')}}
             {{Form::text('quantity',$orders->quantity,['class'=>'form-control','placeholder'=>'Put the quantity of item'])}}

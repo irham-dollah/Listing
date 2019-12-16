@@ -51,7 +51,7 @@
                     <select class="form-control" name="category" id="category" style="width:500px">
                         <option value="beverage">Beverage</option>
                         <option value="snack">Snack</option>
-                        <option value="stationary">Stationary</option>
+                        <option value="stationary">Stationery</option>
                         <option value="textbook">Jacket</option>
                         <option value="textbook">Boot</option>
                         <option value="other">Other</option>

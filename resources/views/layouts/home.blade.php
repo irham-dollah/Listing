@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/fonts/googleFont/sourceSansPro">
 
     <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
     <style>
         .center{
@@ -82,7 +82,7 @@
                     <li class="{{  request()->is('Cart/*') ? 'active' : ''  }}"><a href="{{ route('Cart.index') }}"><i class="fas fa-dollar-sign"></i> <span>New Sale</span></a></li>        
                     <li class="{{  request()->is('sale/*') ? 'active' : ''  }}"><a href="{{ route('Sale.index') }}"><i class="fas fa-dollar-sign"></i> <span>View Sale</span></a></li>        
                     <li class="header">ORDER</li>
-                    <li class="{{  request()->is('OrderCart/*') ? 'active' : ''  }}"><a href="{{ route('OrderCart.index') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
+                    <li class="{{  request()->is('Order/*') ? 'active' : ''  }}"><a href="{{ route('Order.create') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
                     <li class="{{  request()->is('Order') ? 'active' : ''  }}"><a href="{{ route('Order.index') }}"><i class="fas fa-shopping-cart"></i> <span>View Order</span></a></li>        
                     <li class="header">ITEM</li>
                     <li class="{{  request()->is('Item/create') ? 'active' : ''  }}"><a href="{{ route('Item.create') }}"><i class="fas fa-box-open"></i> <span>New Item</span></a></li>        
@@ -112,7 +112,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
 <!--Select2 -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script> --}}
 <!--Chart-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 <!--Cart-->

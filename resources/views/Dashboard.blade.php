@@ -17,7 +17,7 @@
                                 @if ($item->quantity<$item->minimum_no)
                                     <span class="label label-danger">{{$item->name}} need to be ordered now ! </span>
                                     {{-- {{$counter==-1}} --}}
-                                @elseif($item->quantity<($item->minimum_no+10))
+                                @elseif($item->quantity<($item->minimum_no+3))
                                     <span class="label label-warning">{{$item->name}} is low !</span>
                                     {{-- {{$counter==-1}} --}}
                                 @endif

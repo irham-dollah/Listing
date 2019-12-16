@@ -3,6 +3,7 @@
 @section('top')
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
 @endsection
 
 @section('content')
@@ -45,18 +46,17 @@
                 <div class="box box-solid">
                     <div class="box-body">
                         <div class="form-group{{ $errors->has('barcode') ? ' has-error' : '' }}">
-                            <label><h4> Select Item</h4></label>
+                            <label><h4> Item</h4></label>
                             <br>
                             <div >
                                 <select class="js-example-basic-single" name="barcode" id="barcode" style="width:200px">
-                                    <option value="#">Snack</option>
+                                    <option value="#" selected-hidden> &nbsp&nbsp&nbsp-- Select Item -- </option>
+                                    {{-- <option value="#"><b> BEVERAGE </b></option> --}}
                                     @foreach ($items as $item)
-                                        @if ($item->category=='snack')
+                                        {{-- @if ($item->category=='beverage') --}}
                                             <option value="{{$item->id}}">{{$item->name}}</option>        
-                                        @endif
+                                        {{-- @endif --}}
                                     @endforeach
-                                    <option value="#">Alabama</option>
-                                    <option value="WY">Wyoming</option>
                                 </select>
                             </div>
                         </div>
@@ -146,11 +146,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/dataTables.bootstrap.min.js"></script>
+    {{-- {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
 
 <script>
     $(function () {
         $('#cart-table').DataTable(
-            {searching: false}
+            // {searching: false}
         );
     })
 </script>
@@ -163,10 +165,13 @@
             window.location.href = "{{ url('OrderCart') }}"+'/'+rowId+'/edit';
             // window.location.href = "{{ url('Cart/add') }}"+'/'+rowId+'/'+'0';
         });
+        $('.js-example-basic-single').select2();
+        var sportlist=
+        [
+            "test1","test2"
+        ];
     });
-    $(document).ready(function() {
-    $('.js-example-basic-single').select2();
-    });
+    
 </script>
 <script>
     
@@ -212,7 +217,7 @@
             // window.location.href = "{{ url('Cart/add') }}"+'/'+rowId+'/'+quantity; 
             $.ajax({
             type: 'get',
-            url: '/OrderCart/add/'+rowId+'/'+quantity,
+            url: '/OrderCart/new/'+rowId+'/'+quantity,
             success: function(data){
                 if (data == 'success') {               
                     $('#'+ rowId + '_show').html('RM ' + item_amount);

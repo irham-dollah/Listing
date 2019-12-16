@@ -35,7 +35,7 @@
                                 <td class="center">
                                     <span class="label label-danger">Order Now !</span>
                                 </td>
-                            @elseif($item->quantity<($item->minimum_no+10))
+                            @elseif($item->quantity<($item->minimum_no+3))
                                 <td class="center">
                                     <span class="label label-warning">In need</span>
                                 </td>

@@ -6,11 +6,11 @@
     <br>
     {!! Form::open(['action'=>'UsersController@store','method'=>'POST'])!!}
         {{ csrf_field() }}
-        <div class="form-group" style="width:250px">
+        <div class="form-group" style="width:500px">
             {{Form::label('name','Name')}}
             {{Form::text('name','',['class'=>'form-control','placeholder'=>'Put your name'])}}
         </div>
-        <div class="form-group" style="width:250px">
+        <div class="form-group" style="width:500px">
             {{Form::label('matric_no','Matric No')}}
             {{Form::text('matric_no','',['class'=>'form-control','placeholder'=>'Put your matric no'])}}
         </div>

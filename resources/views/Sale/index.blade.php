@@ -53,9 +53,6 @@
                                 </td> 
                             @else
                                 <td class="center">
-                                        <b><p>Only for admin</p></b>   
-                                </td>
-                                <td class="center">
                                     <b><p>Only for admin</p></b>   
                                 </td>
                             @endif

@@ -53,7 +53,7 @@ class OrdersController extends Controller
         if ($request->get('status')=='Complete') {
             $item->quantity += $request->input('quantity');
         }
-        $order->price=$item->buying_price * $request->input('quantity');
+        $order->total_price=$item->buying_price * $request->input('quantity');
         $order->quantity=$request->input('quantity');
         $order->save();
         $item->save();
@@ -70,7 +70,7 @@ class OrdersController extends Controller
     public function show($id)
     {
         $orders=Order::find($id);
-        return view('Order.show')->with('orders',$orders);
+        return view('Order.show', compact('orders'));
     }
 
     /**
@@ -82,7 +82,7 @@ class OrdersController extends Controller
     public function edit($id)
     {
         $orders=Order::find($id);
-        return view('Order.edit')->with('orders',$orders);
+        return view('Order.edit', compact('orders'));
     }
 
     /**
@@ -101,7 +101,7 @@ class OrdersController extends Controller
         
         $order=Order::find($id);
         $item=Item::FindOrFail($order->item_id);
-        $order->price=$item->buying_price * $request->input('quantity');
+        $order->total_price=$item->buying_price * $request->input('quantity');
 
         if ($order->status=='Complete' && $request->get('status')=='Complete') {
             $item->quantity = $item->quantity - $order->quantity + $request->input('quantity');
