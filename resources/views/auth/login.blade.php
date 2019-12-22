@@ -17,7 +17,9 @@
                             <div class="col-md-6">
                                 <input id="matric_no" class="form-control" name="matric_no" value="{{ old('matric_no') }}" required autofocus>
 
-                                @if ($errors->has('matric_no'))
+                                @if ($errors->has('throttle'))
+                                    <strong>{{ $errors->first('throttle') }}</strong>
+                                @elseif ($errors->has('matric_no'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('matric_no') }}</strong>
                                     </span>
@@ -31,7 +33,11 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('throttle'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('throttle') }}</strong> 
+                                    </span>
+                                @elseif ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>

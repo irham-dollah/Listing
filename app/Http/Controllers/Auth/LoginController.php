@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 // use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+// use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class LoginController extends Controller
 {
@@ -20,6 +21,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    // use AuthenticatesUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login.
@@ -33,22 +35,17 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        // $this->middleware('throttle:5,1')->only('login');
     }
 
     public function username()
     {
         return 'matric_no';
     }
-    // protected function validateLogin(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         $this->username() => 'required', 
-    //         'password' => 'required',
-    //         'matric_no' => 'required',
-    //         // new rules here
-    //     ]);
-    // }
+
+    
 }

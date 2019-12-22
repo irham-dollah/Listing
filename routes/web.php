@@ -20,22 +20,18 @@ Route::resource('Sale', 'SalesController');
 Route::resource('Cart', 'CartsController');
 Route::resource('OrderCart', 'OrderCartsController');
 Route::get('/home', 'UserChartController@index');
-// Route::resource('Dashboard', 'UserChartController');
 Route::get('Dashboard', 'UserChartController@index');
 Route::get('/Cart/add/{id}/{quantity}','CartsController@add');
-// Route::get('/Cart/new/{id}/{quantity}','SaleCartsController@add');
 Auth::routes();
-// Route::get('Dashboard', 'DashboardController@index');
+
+    // Route::middleware('throttle:3,1')->group(function () {
+    //     Route::get('/login', 'PagesController@index');
+    // });
 
 Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
 {
     Route::resource('Item', 'ItemsController');
     Route::resource('User', 'UsersController');
-});
-
-Route::group(['middleware' => 'App\Http\Middleware\MemberMiddleware'], function()
-{
-    
 });
 
 // Route::group(['middleware' => ['auth']], function() {

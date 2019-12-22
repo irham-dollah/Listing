@@ -13,6 +13,11 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $orders=Order::all();
@@ -40,7 +45,6 @@ class OrdersController extends Controller
     {
         $this->validate($request, [
             'item_id'=>'required|integer',
-            //'price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
         ]);
         
