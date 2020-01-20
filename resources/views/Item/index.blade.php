@@ -15,10 +15,9 @@
             <table id="item-table" class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Buying Price</th>
-                        <th>Selling Price</th>
                         <th>Status</th>
                         <th>Action</th>
                         <th>Delete</th>
@@ -27,17 +26,12 @@
                 <tbody>
                     @foreach($items as $item)
                         <tr>
+                            <td>{{$item->id}}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>RM {{ $item->buying_price }}</td>
-                            <td>RM {{ $item->selling_price }}</td>
                             @if ($item->quantity<$item->minimum_no)
                                 <td class="center">
                                     <span class="label label-danger">Order Now !</span>
-                                </td>
-                            @elseif($item->quantity<($item->minimum_no+3))
-                                <td class="center">
-                                    <span class="label label-warning">In need</span>
                                 </td>
                             @else
                                 <td class="center">

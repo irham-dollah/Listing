@@ -10,6 +10,8 @@ class Item extends Model
     protected $table="items";
     //primary key
     public $primaryKey='id';
+    //key type
+    protected $keyType='float';
     //Timestamps
     public $timestamps=true;
 }

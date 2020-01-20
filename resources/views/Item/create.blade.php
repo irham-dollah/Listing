@@ -49,12 +49,13 @@
                 <label>Category</label>
                 <div>
                     <select class="form-control" name="category" id="category" style="width:500px">
-                        <option value="beverage">Beverage</option>
-                        <option value="snack">Snack</option>
-                        <option value="stationary">Stationery</option>
-                        <option value="textbook">Jacket</option>
-                        <option value="textbook">Boot</option>
-                        <option value="other">Other</option>
+                        <option value="Beverage">Beverage</option>
+                        <option value="Snack">Snack</option>
+                        <option value="Stationary">Stationery</option>
+                        <option value="Textbook">Textbook</option>
+                        <option value="Jacket">Jacket</option>
+                        <option value="Boot">Boot</option>
+                        <option value="Sweets">Sweets</option>
                     </select>
                 </div>
         </div>    

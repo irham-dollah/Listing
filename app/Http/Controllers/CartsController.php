@@ -24,8 +24,6 @@ class CartsController extends Controller
     
     public function index()
     {
-        // Cart::instance('sale')->content();
-        // Cart::instance('sales')->content();
         $carts = Cart::content();
         return view ('Cart.index', compact('carts'));
     }

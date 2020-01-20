@@ -44,7 +44,7 @@ class OrdersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'item_id'=>'required|integer',
+            'item_id'=>'required|string',
             'quantity'=>'required|integer',
         ]);
         

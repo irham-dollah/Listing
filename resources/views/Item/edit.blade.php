@@ -8,13 +8,13 @@
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('id') ? ' has-error' : '' }}" style="width:500px">
             {{Form::label('id','ID')}}
-            {{-- <p>{{$items->id}}</p> --}}
-            {{Form::text('id',$items->id,['class'=>'form-control','placeholder'=>'Put the barcode'])}}
+            <p>{{$items->id}}</p>
+            <!-- {{Form::text('id',$items->id,['class'=>'form-control','placeholder'=>'Put the barcode'])}} -->
         </div>
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}" style="width:500px">
             {{Form::label('name','Name')}}
-            {{-- <p>{{$items->name}} ({{$items->category}}) </p> --}}
-            {{Form::text('name',$items->name,['class'=>'form-control','placeholder'=>'Put the name'])}}
+            <p>{{$items->name}}</p>
+            <!-- {{Form::text('name',$items->name,['class'=>'form-control','placeholder'=>'Put the name'])}} -->
         </div>
         <div class="form-group{{ $errors->has('buying_price') ? ' has-error' : '' }}" style="width:500px">
             {{Form::label('buying_price','Buying Price')}}
@@ -34,15 +34,19 @@
         </div>
         <div class="category">
             <label>Category</label>
-            <div>
+            <!-- <div>
                 <select class="form-control" name="category" id="category" style="width:500px">
-                    <option value="beverage">Beverage</option>
-                    <option value="snack">Snack</option>
-                    <option value="stationary">Stationary</option>
-                    <option value="textbook">TextBook</option>
-                    <option value="other">Other</option>
+                    <option value="Beverage">Beverage</option>
+                    <option value="Snack">Snack</option>
+                    <option value="Stationary">Stationery</option>
+                    <option value="Textbook">Textbook</option>
+                    <option value="Jacket">Jacket</option>
+                    <option value="Boot">Boot</option>
+                    <option value="Sweets">Sweets</option>
                 </select>
-            </div>
+            </div> -->
+            {{Form::label('category','Category')}}
+            <p>{{$items->category}}</p>
         </div>    
         <br>
         {{Form::hidden('_method','PUT')}}

@@ -101,21 +101,21 @@ class ItemsController extends Controller
     {
         $this->validate($request, [
             'id'=>'required|string',
-            'name'=>'required|string',
+            // 'name'=>'required|string',
             'buying_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'selling_price'=>'required|regex:/^\d+(\.\d{1,2})?$/',
             'quantity'=>'required|integer',
-            'category'=>'required|string',
+            // 'category'=>'required|string',
             'minimum_no'=>'required|integer'
         ]);
         
         $item=Item::find($id);
         $item->id=$request->input('id');
-        $item->name=$request->input('name');
+        // $item->name=$request->input('name');
         $item->buying_price=$request->input('buying_price');
         $item->selling_price=$request->input('selling_price');
         $item->quantity=$request->input('quantity');
-        $item->category=$request->get('category');
+        // $item->category=$request->get('category');
         $item->minimum_no=$request->input('minimum_no');
         $item->save();
         

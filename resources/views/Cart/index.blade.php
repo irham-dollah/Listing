@@ -33,10 +33,8 @@
                 <div class="box box-solid">
                     <div class="box-body">
                         <label>Date</label>
-                        {{-- <p>{{ date('d/m/Y') }}</p> --}}
                         <p>{{ date('d/m/Y')}}</p>
                         <label>Cashier</label>
-                        {{-- <p>{{ auth()->user()->name }}</p> --}}
                         <p>{{ auth()->user()->name }}</p>
                     </div>
                 </div>
@@ -100,7 +98,6 @@
                     <tr>
                         <th width="40%">Name</th>
                         <th width="20%">Quantity</th>
-                        {{-- <th>Change Qty</th> --}}
                         <th>Price</th>
                         <th>Subtotal</th>
                         <th>Remove</th>
@@ -110,11 +107,9 @@
                     @foreach($carts as $cart)
                         <tr>
                             <td>{{ $cart->name }}</td>
-                            {{-- <td>{{ $cart->qty }}</td> --}}
                             <td class="center">
                                 <div class="form-group">
                                     <input price="{{ $cart->price  }}" rowId="{{ $cart->rowId }}" type="number" value="{{ $cart->qty }}" class="form-control prc" required>
-                                    {{-- {{Form::text('qty',$cart->qty,['class'=>'form-control','placeholder'=>'Put the barcode'])}} --}}
                                 </div>
                             </td>
                             <td>
@@ -126,13 +121,6 @@
                             <td class="center">
                                 <button rowId="{{ $cart->rowId }}" type="button" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></button>
                             </td>
-                            {{-- <td class="center">
-                                <form action="{{ route('Cart.edit', ['rowId'=>$cart->rowId ]) }}" method="post" onsubmit="return confirm('Delete order {{ $cart->rowId }} permanently?')" >
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-danger btn-sm" type="submit" ><i class="glyphicon glyphicon-trash"></i> DELETE</button>
-                                </form>
-                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
@@ -170,21 +158,18 @@
     
     $('.form-group').on('input', '.abc', function(){
         var currbalance=0;
-        // if (totalSum==0) {
-        //     totalSum=Cart::subtotal() ;
-        // }
         var totalSum=0;
         $('.form-group .prc').each(function(){
             var quantity = $(this).val();
             var price=$(this).attr('price');
+            if ($.isNumeric(quantity) && quantity!=0){
             var item_amount= parseFloat(price*quantity);
-            if ($.isNumeric(quantity)){
                 totalSum += parseFloat(item_amount);
             }
         });
         $('.form-group .abc').each(function(){
             var amount=$(this).val();
-            if ($.isNumeric(amount)){
+            if ($.isNumeric(amount) && (amount>totalSum || amount==totalSum)){
             currbalance += parseFloat(amount - totalSum);
             }
         });
@@ -196,8 +181,9 @@
         $('.form-group .prc').each(function(){
             var quantity = $(this).val();
             var price=$(this).attr('price');
+            if ($.isNumeric(quantity) && quantity!=0){
             var item_amount= parseFloat(price*quantity);
-            if ($.isNumeric(quantity)){
+            // if ($.isNumeric(quantity)){
                 totalSum += parseFloat(item_amount);
             }
         });

@@ -8,7 +8,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name'=>'Admin',
+            'name'=>'Super Admin',
             'matric_no'=>'1527693',
             'password'=>bcrypt('Aidi16320'),
             'type'=>'super_admin'
