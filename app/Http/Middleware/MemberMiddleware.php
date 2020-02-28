@@ -16,7 +16,7 @@ class MemberMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->type !='Member'){
+        if ($request->user() && $request->user()->type !='u'){
             return new Response (view('unauthorized')->with('role','MEMBER'));
         }
         return $next($request);    

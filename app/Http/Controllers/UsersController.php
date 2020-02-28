@@ -43,14 +43,14 @@ class UsersController extends Controller
     {
         $this->validate($request,[
             'name' => 'required|string|max:255',
-            'matric_no' => 'required|integer|digits:7|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'type'=>'required',
         ]);
 
         $user= new User;
         $user->name=$request->input('name');
-        $user->matric_no=$request->input('matric_no');
+        $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
         $user->type=$request->input('type');
         $user->save();
@@ -66,8 +66,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $users=User::find($id);
-        return view('User.show')->with('users',$users);
+        // $users=User::find($id);
+        // return view('User.show')->with('users',$users);
     }
 
     /**
@@ -92,11 +92,17 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+            'type'=>'required',
         ]);
         
         $user=User::find($id);
+        $user->name=$request->input('name');
+        $user->email=$request->input('email');
         $user->password=bcrypt($request->input('password'));
+        $user->type=$request->input('type');
         $user->save();
         
         return redirect('/User')->with('success','User updated');

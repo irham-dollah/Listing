@@ -1,45 +1,37 @@
 @extends('layouts.home')
 
 @section('top')
-    <!-- DataTables -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.bootstrap.css">
 @endsection
 
 @section('content')
 
-    {{-- <div class="box-header">
-        <a href="{{ route('User.create') }}" class="btn btn-primary" ><i class="glyphicon glyphicon-plus"></i> Add User</a>
-    </div> --}}
-
     <div class="box box-success box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">List of User</h3>
+            @if(Auth::user()->type=='a')
+                <a href="{{ route('User.create', ['id'=>Auth::user()->id ]) }}" class="btn btn-info">ADD</a>
+            @endif
         </div>
-        <!-- /.box-header -->
         <div class="box-body table-responsive">
             <table id="user-table" class="table table-bordered table-striped table-hover datatable">
                 <thead>
                     <tr>
-                        <th>Member No</th>
                         <th>Name</th>
-                        <th>Category</th>
-                        <th>Created At</th>
-                        <th>Forgot Password</th>
-                        <th>Remove User</th>
+                        <th>Type</th>
+                        <th>Edit</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $user)
-                       @if ($user->type != "super_admin")
                         <tr>
-                                <td>#{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->type }}</td>
-                                <td>{{ $user->created_at }}</td>
+                                @if(Auth::user()->type=='a')
                                 <td class="center">
                                     <a href="{{ route('User.edit', ['id'=>$user->id ]) }}" class="btn btn-warning btn-sm custom"><i class="glyphicon glyphicon-edit"></i> EDIT</a>
                                 </td>
-                                
                                 <td class="center">
                                     <form action="{{ route('User.destroy', ['id'=>$user->id ]) }}" method="post" onsubmit="return confirm('Delete order {{ $user->name }} permanently?')" >
                                             <input type="hidden" name="_method" value="DELETE">
@@ -47,13 +39,19 @@
                                             <button class="btn btn-danger btn-sm" type="submit" ><i class="glyphicon glyphicon-trash"></i> DELETE</button>
                                     </form>
                                 </td>
+                                @else
+                                <td class="center">
+                                    <b><p>Only for admin</p></b>   
+                                </td>
+                                <td class="center">
+                                    <b><p>Only for admin</p></b>   
+                                </td>
+                                @endif
                             </tr>
-                        @endif
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <!-- /.box-body -->
     </div>
 @endsection
 

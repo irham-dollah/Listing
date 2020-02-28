@@ -28,9 +28,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // public function sendPasswordResetNotification($token)
-    // {
-    //     $this->notify(new CustomResetPasswordNotification($token));
-    // // $user->notify(new InvoicePaid($invoice));
-    // }
 }

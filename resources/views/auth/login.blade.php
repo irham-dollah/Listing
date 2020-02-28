@@ -11,17 +11,17 @@
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('matric_no') ? ' has-error' : '' }}">
-                            <label for="matric_no" class="col-md-4 control-label">Matric No</label>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Email</label>
 
                             <div class="col-md-6">
-                                <input id="matric_no" class="form-control" name="matric_no" value="{{ old('matric_no') }}" required autofocus>
+                                <input id="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('throttle'))
                                     <strong>{{ $errors->first('throttle') }}</strong>
-                                @elseif ($errors->has('matric_no'))
+                                @elseif ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('matric_no') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>

@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>OSIS</title>
+    <title>LIST</title>
 
   <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +43,8 @@
     <div class="wrapper">
         <header class="main-header">
             <a href="/Dashboard" class="logo">
-                <span class="logo-mini"><b>OS</b>IS</span>
-                <span class="logo-lg"><b>INVENTORY</b>SYSTEM</span>
+                <span class="logo-mini"><b>LI</b>ST</span>
+                <span class="logo-lg"><b>LISTING</b>SYSTEM</span>
             </a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -77,18 +77,9 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 <ul class="sidebar-menu" data-widget="tree">
-                    {{-- <li class="{{  request()->is('Dashboard') ? 'active' : ''  }}"><a href="{{ url('/Dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> --}}
-                    <li class="header">SALE</li>
-                    <li class="{{  request()->is('Cart/*') ? 'active' : ''  }}"><a href="{{ route('Cart.index') }}"><i class="fas fa-dollar-sign"></i> <span>New Sale</span></a></li>        
-                    <li class="{{  request()->is('sale/*') ? 'active' : ''  }}"><a href="{{ route('Sale.index') }}"><i class="fas fa-dollar-sign"></i> <span>View Sale</span></a></li>        
-                    <li class="header">ORDER</li>
-                    <li class="{{  request()->is('Order/*') ? 'active' : ''  }}"><a href="{{ route('Order.create') }}"><i class="fas fa-shopping-cart"></i> <span>New Order</span></a></li>        
-                    <li class="{{  request()->is('Order') ? 'active' : ''  }}"><a href="{{ route('Order.index') }}"><i class="fas fa-shopping-cart"></i> <span>View Order</span></a></li>        
-                    <li class="header">ITEM</li>
-                    <li class="{{  request()->is('Item/create') ? 'active' : ''  }}"><a href="{{ route('Item.create') }}"><i class="fas fa-box-open"></i> <span>New Item</span></a></li>        
-                    <li class="{{  request()->is('Item') ? 'active' : ''  }}"><a href="{{ route('Item.index') }}"><i class="fas fa-box-open"></i> <span>View Item</span></a></li>        
-                    <li class="header">USER</li>
-                    <li class="{{  request()->is('User/create') ? 'active' : ''  }}"><a href="{{ route('User.create') }}"><i class="fas fa-user-alt"></i> <span>New User</span></a></li>        
+                    <li class="header">LIST SEGMENT</li>
+                    <li class="{{  request()->is('Listing') ? 'active' : ''  }}"><a href="{{ route('Listing.index') }}"><i class="fas fa-box-open"></i> <span>View List</span></a></li>        
+                    <li class="header">USER SEGMENT</li>
                     <li class="{{  request()->is('User') ? 'active' : ''  }}"><a href="{{ route('User.index') }}"><i class="fas fa-user-alt"></i> <span>View User</span></a></li>        
                 </ul>
             </section>

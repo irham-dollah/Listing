@@ -1,8 +1,8 @@
 @extends ('layouts.home')
 
 @section('content')
-    {{-- <a href="/User" class="btn btn-default">Return</a> --}}
-    <h1>Add User</h1>
+<a href="{{ route('User.index') }}" class="btn btn-default"></i> BACK</a>
+<h1>Add User</h1>
     <br>
     {!! Form::open(['action'=>'UsersController@store','method'=>'POST'])!!}
         {{ csrf_field() }}
@@ -11,8 +11,8 @@
             {{Form::text('name','',['class'=>'form-control','placeholder'=>'Put your name'])}}
         </div>
         <div class="form-group" style="width:500px">
-            {{Form::label('matric_no','Matric No')}}
-            {{Form::text('matric_no','',['class'=>'form-control','placeholder'=>'Put your matric no'])}}
+            {{Form::label('email','Email')}}
+            {{Form::text('email','',['class'=>'form-control','placeholder'=>'Put your email'])}}
         </div>
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}" style="width:500px">
             {{Form::label('password','New Password')}}
@@ -28,11 +28,12 @@
             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
         </div> 
         <div class="form-group">
-            <label>User Type</label>
+            {{-- <label>User Type</label> --}}
+            {{Form::label('type','User Type')}}
             <div class="#">
                 <select class="form-control" name="type" id="type" style="width:500px">
-                    <option value="admin">Admin</option>
-                    <option value="member">Member</option>
+                    <option value="a">Admin</option>
+                    <option value="u">Member</option>
                 </select>
             </div>
         </div>
